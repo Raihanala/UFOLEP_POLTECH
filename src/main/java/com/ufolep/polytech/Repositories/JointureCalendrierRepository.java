@@ -19,7 +19,7 @@ public interface JointureCalendrierRepository extends JpaRepository<JointureCale
     List<JointureCalendrier> findByIdEvenement(Long idEvenement);
 
     // Trouver les participants pour une cible spécifique dans un événement
-    List<JointureCalendrier> findByIdEvenementAndCible(Long idEvenement, String cible);
+    List<JointureCalendrier> findByIdEvenementAndCible(int idEvenement, String cible);
     List<JointureCalendrier> findByIdEvenementAndCibleAndNumeroTir(Long idEvenement, String cible, Integer numeroTir);
 
 }

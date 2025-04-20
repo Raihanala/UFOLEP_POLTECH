@@ -11,6 +11,10 @@ public class ClubsUtilisateur {
     private String nom;
     private String prenom;
     private String licence;
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipes equipe;
+
     @Enumerated(EnumType.STRING)  
     private Sexe sexe;
     @Enumerated(EnumType.STRING)

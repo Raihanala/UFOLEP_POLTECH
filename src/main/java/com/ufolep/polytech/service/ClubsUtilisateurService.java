@@ -4,11 +4,17 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ufolep.polytech.model.*;
 
 import com.ufolep.polytech.Repositories.*;
+import java.util.Optional;
+
 @Service
 public class ClubsUtilisateurService {
 
@@ -17,6 +23,7 @@ public class ClubsUtilisateurService {
     
     @Autowired
     private ClubUtilisateurRepository clubsUtilisateurRepository;
+    
 
     // Récupérer le score d'un utilisateur pour un événement et une cible
     public List<Marque> getScore(String user_license, Long id_evenement, Long id_cible, Integer depart) {
@@ -69,6 +76,7 @@ public class ClubsUtilisateurService {
     public void deleteClubsUtilisateur(Long id) {
         clubsUtilisateurRepository.deleteById(id);
     }
+    
 
     // Récupérer un ClubsUtilisateur par son ID
     public ClubsUtilisateur getClubsUtilisateurById(Long id) {
@@ -80,4 +88,8 @@ public class ClubsUtilisateurService {
     public List<ClubsUtilisateur> getAllClubsUtilisateurs() {
         return clubsUtilisateurRepository.findAll();
     }
-}
+    public Optional<ClubsUtilisateur> findByLicence(String licence) {
+    	   return clubsUtilisateurRepository.findByLicence(licence);
+    	}
+
+    }

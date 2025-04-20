@@ -12,13 +12,17 @@ public class Cibles {
     private int idEvenement;
     private int idCible;
     private String code;
-    private String equipe;
     private String depart1;
     private String depart2;
     private String depart3;
     private String depart4;
     private int total;
     private boolean valide;
+    @OneToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipes equipe;
+
+
 	public Long getId() {
 		return id;
 	}
@@ -43,12 +47,7 @@ public class Cibles {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getEquipe() {
-		return equipe;
-	}
-	public void setEquipe(String equipe) {
-		this.equipe = equipe;
-	}
+	
 	public String getDepart1() {
 		return depart1;
 	}

@@ -1,5 +1,7 @@
 package com.ufolep.polytech.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +22,16 @@ public class Equipes {
     private String penalite;
     private int total;
     private String valide;
+    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL)
+    private List<ClubsUtilisateur> archers;
+    @OneToOne
+    @JoinColumn(name = "marqueur_id")
+    private ClubsUtilisateur marqueur;
+
+    @ManyToOne
+    @JoinColumn(name = "cible_id")
+    private Cibles cible;
+
 	public Long getId() {
 		return id;
 	}

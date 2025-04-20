@@ -4,9 +4,11 @@ import com.ufolep.polytech.model.ClubsUtilisateur;
 import com.ufolep.polytech.service.ClubsUtilisateurService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clubsUtilisateurs")
@@ -39,4 +41,16 @@ public class ClubsUtilisateurController {
     public List<ClubsUtilisateur> getAllClubsUtilisateurs() {
         return clubsUtilisateurService.getAllClubsUtilisateurs();
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/licence/{licence}")
+    public ResponseEntity<ClubsUtilisateur> getByLicence(@PathVariable String licence) {
+       System.out.println("Received license: " + licence); // Add logging for debugging
+       Optional<ClubsUtilisateur> utilisateur = clubsUtilisateurService.findByLicence(licence);
+       return utilisateur
+               .map(ResponseEntity::ok)
+               .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
+
 }
