@@ -10,7 +10,6 @@ public class Cibles {
     private Long id;
 
     private int idEvenement;
-    private int idCible;
     private String code;
     private String depart1;
     private String depart2;
@@ -35,12 +34,7 @@ public class Cibles {
 	public void setIdEvenement(int idEvenement) {
 		this.idEvenement = idEvenement;
 	}
-	public int getIdCible() {
-		return idCible;
-	}
-	public void setIdCible(int idCible) {
-		this.idCible = idCible;
-	}
+
 	public String getCode() {
 		return code;
 	}
